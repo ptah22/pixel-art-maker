@@ -1,36 +1,36 @@
-// Select color input
-// Select size input
+// Select color inpt
+//select size input
+var height, width, color;
 
-// When size is submitted by the user, call makeGrid()
+//when size is submittd by te user, cal makeGrid()
+$('#sizePicker').submit(funcion (event) {
+    event.preventDefault();
+    height = $(#inputHeight').val();
+    width = $(#inputWeight').val();
+    makeGrid(height, width);
 
-function makeGrid(width, height) {
-	let pixelCanvas, grid;
-	pixelCanvas = $('#pixel_canvas');
-	if (pixelCanvas.children().length) {
-		pixelCanvas.empty();
-	}
-	for(let i = 0; i < height; i++) {
-		grid += "<tr>";
-		for (let j = 0; j < width; j++) {
-			grid += "<td></td>";
-		}
-		grid += "</tr>";
-	}
-	pixelCanvas.html(grid);
-	pixelCanvas.css("background-color", "#ffffff");
-};
+)}
 
-$(document).ready(function(){
-	$('#submit-btn').click(function(evt) {
-		let height, width;
-		width = $('#input_width').val();
-		height = $('#input_height').val();
-		evt.preventDefault();
-		makeGrid(width, height);
-	});
 
-	$('#pixel_canvas').click(function(evt) {
-		let color = $('#colorPicker').val();
-		$(evt.target).css('background-color', color);
-	});
-});
+function makeGrid(x,y) {
+    $('tr').remove();
+	
+	
+     for (var i = 1; i <=x; i++) {
+	  $('#pixel_canvas').append('tr id=table' + i + '></tr>');
+	  for (var j = 1; j <=y; j++) {
+	       $('#table' + i).append('<td></td>');
+	  }
+     }
+	
+	
+	$('td').click(function addColor() {
+	   color = $('#colorPicker').val();
+		
+	   if ($(this).attr('style')) [
+		$(this).removeAttr('style')
+           } else { 
+		$(this).attr('style', 'background-color:' + color)
+           }
+         })
+ }
